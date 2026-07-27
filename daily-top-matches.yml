@@ -1,0 +1,36 @@
+name: Daily top property matches
+on:
+  schedule:
+    - cron: "17 6 * * *"
+      timezone: "Europe/Berlin"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Search and notify top matches
+        env:
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          MAIL_RECIPIENT: david.t.mueller@gmx.de
+          SMTP_HOST: mail.gmx.net
+          SMTP_PORT: "587"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python src/agent.py --mode daily
+      - name: Persist search state
+        run: |
+          git config user.name "property-agent-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/state.json
+          git diff --cached --quiet || git commit -m "Update property search state"
+          git push
