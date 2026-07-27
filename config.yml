@@ -1,0 +1,93 @@
+search:
+  center: "Weilburg, Hessen"
+  radius_km: 40
+  min_plot_sqm: 2000
+  max_price_eur: null
+  result_limit_per_query: 30
+  keywords:
+    - Mühle
+    - Wassermühle
+    - Mühlenanwesen
+    - Hof
+    - Resthof
+    - Bauernhof
+    - Hofreite
+    - Gehöft
+    - Gutshof
+    - Landgut
+    - Aussiedlerhof
+    - Vierseithof
+    - Anwesen
+    - Alleinlage
+    - Scheune
+    - Pferdehof
+    - historisches Anwesen
+  # Orte im ungefähren 40-km-Radius. Ergänzen oder entfernen ist jederzeit möglich.
+  places:
+    - Weilburg
+    - Löhnberg
+    - Merenberg
+    - Weinbach
+    - Weilmünster
+    - Mengerskirchen
+    - Waldbrunn Westerwald
+    - Beselich
+    - Villmar
+    - Runkel
+    - Limburg an der Lahn
+    - Hadamar
+    - Elz Hessen
+    - Dornburg Hessen
+    - Brechen Hessen
+    - Hünfelden
+    - Selters Taunus
+    - Bad Camberg
+    - Braunfels
+    - Leun
+    - Solms
+    - Greifenstein
+    - Ehringshausen
+    - Wetzlar
+    - Schöffengrund
+    - Hüttenberg
+    - Waldsolms
+    - Usingen
+    - Grävenwiesbach
+    - Neu-Anspach
+    - Ranstadt
+    - Weilrod
+    - Selters Westerwald
+    - Montabaur
+    - Diez
+  domains:
+    - immobilienscout24.de
+    - immowelt.de
+    - kleinanzeigen.de
+    - landimmo24.de
+    - immonet.de
+    - immobilien.de
+    - ohne-makler.net
+    - argetra.de
+    - sparkassen-immobilien.de
+    - vr-immobilien.de
+
+notifications:
+  recipient: "david.t.mueller@gmx.de"
+  weekly_weekday: "Sunday"
+  top_match:
+    enabled: true
+    min_score: 75
+    min_plot_sqm: 3000
+    preferred_keywords:
+      - Mühle
+      - Wassermühle
+      - Resthof
+      - Hofreite
+      - Alleinlage
+      - Aussiedlerhof
+
+features:
+  detect_price_changes: true
+  include_existing_active_in_weekly: false
+  fetch_listing_pages: true
+  optional_ai_analysis: true
